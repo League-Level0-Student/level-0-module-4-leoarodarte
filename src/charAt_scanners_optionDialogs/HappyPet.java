@@ -7,7 +7,7 @@ public class HappyPet {
 	// 2. Add the following variable to the next line: static int happinessLevel =
 	// 0;
 	// this will be used to store the happiness of your pet
-	int happinessLevel = 0;
+	static int hl = 0;
 
 	public static void main(String[] args) {
 		// 1. Ask the user what kind of pet they want to buy, and store their answer in
@@ -19,28 +19,44 @@ public class HappyPet {
 		// pet happy
 		// (eg: cuddle, food, water, take a walk, groom, clean up poop).
 		// Make sure to customize the title and question too.
-
-		int task = JOptionPane.showOptionDialog(null, "What do you want to do with your pet?", "Action", 0,
+for(int i=0; i<10; i++) {
+	int task = JOptionPane.showOptionDialog(null, "What do you want to do with your pet?", "Action", 0,
 				JOptionPane.INFORMATION_MESSAGE, null, new String[] { "Give it a bath.", "Give it 10 treats.",
 						"Play with it.", "Kill it, then eat it, then make it's fur into toilet paper." },
 				null);
 		if (task == 0) {
 			if (a.equals("A cat.")) {
 				bath();
+				 hl -=2;
+				 JOptionPane.showMessageDialog(null, "Happiness Level = " + hl);
 			} else {
 				JOptionPane.showMessageDialog(null, "Good job! You shall be rewarded!");
+				hl +=1;
+				JOptionPane.showMessageDialog(null, "Happiness level = " + hl);
 			}
 		}
 		if (task == 1) {
+			if(i>2) {
 			feed();
+			hl -=10;
+			JOptionPane.showMessageDialog(null, "Happiness level = " + hl);
+		}else {
+			feed();
+			hl +=5;
+			JOptionPane.showMessageDialog(null, "Happiness level = " + hl);
+		}
 		}
 		if (task == 2) {
 			play();
+			hl +=2;
+			JOptionPane.showMessageDialog(null, "Happiness level = " + hl);
 		}
 		if (task == 3) {
 			kill();
+			JOptionPane.showMessageDialog(null, "Congratulations, you saved $3 on toilet paper!");
+			System.exit(0);
 		}
-
+		}
 	}
 
 	// 5. Use user input to call the appropriate method created in step 4.
@@ -65,6 +81,6 @@ public class HappyPet {
 	}
 
 	static void kill() {
-		JOptionPane.showMessageDialog(null, "You are a horrible person. 3 days later: This toilet paper sucks!");
+		JOptionPane.showMessageDialog(null, "You are a horrible person. 3 days later: This toilet paper sucks! ");
 	}
 }
